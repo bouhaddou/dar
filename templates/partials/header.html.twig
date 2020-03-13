@@ -51,90 +51,78 @@
                 
 
 <div class="toolbar">
-<div class="container">
-<div class="row menuC">
-<div class="col-md-12" >
-<div id="btnToggle" class="toolbarItemL toolbar101 hidden-lg hidden-md" title="القائمة">
-</div>
-<!--<a class="toolbarItemL toolbar100 hidden-lg " href="/" title="الرئيسية"></a>-->
-<a class="toolbarItemR toolbarText  hidden-sm hidden-xs" href="{{ path('pageIndex') }}" >الرئيسية</a>
-<div class="spacerMenu hidden-md hidden-sm hidden-xs">|
-</div>
-<div class="dropdown toolbarItemR_no  hidden-sm hidden-xs ">
-<div class="toolbarText toolbarItemR dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-عن كافل
-</div>
-<div class="spacerMenu  hidden-sm hidden-xs">|
-</div>
-<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-<div><a href = "pages/1.html" >النشأة والتأسيس</a>
-</div>
-<div><a href = "pages/54.html" >أهدافنا</a>
-</div>
-<div><a href = "management.html" >الإدارة العليا لكافل</a>
-</div>
-<div><a href = "management2.html" >أعضاء مجلس الإدارة</a>
-</div>
-<div><a href = "management3.html" >الأمانة العامة</a>
-</div>
-<div><a href = "pages/45.html" >إدارات كافل</a>
-</div>
-<div><a href = "pages/36.html" >الهيكل الإداري</a>
-</div>
-</div>
-</div><a class="toolbarItemR toolbarText  hidden-sm hidden-xs" href="pages/30.html" >اكفل يتيم</a>
-<div class="spacerMenu hidden-md hidden-sm hidden-xs">|
-</div><a class="toolbarItemR toolbarText  hidden-sm hidden-xs" href="projects.html" >المشاريع والبرامج</a><div class="spacerMenu hidden-md hidden-sm hidden-xs">|</div><div class="dropdown toolbarItemR_no  hidden-sm hidden-xs ">
-<div class="spacerMenu  hidden-sm hidden-xs">|</div>
-<div class="dropdown-menu" aria-labelledby="dropdownMenuButton"><div>
-<a href = "news.html" >الأخبار</a>
-</div>
-<div><a href = "qalo.html" >كافل في عيونهم</a></div>
-<div>
-<a href = "pages/55.html" >أسئلة شائعة</a>
-</div>
-<div>
-<a href = "media.html" >مكتبة الصور</a>
-</div>
-<div>
-<a href = "video/72.html" >مكتبة الفيديو</a>
-</div>
-<div>
-<a href = "reports.html" >التقارير والإنجازات</a>
-</div>
-</div>
-</div>
-<div class="dropdown toolbarItemR_no  hidden-sm hidden-xs ">
-<div class="toolbarText toolbarItemR dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-الخدمات الإلكترونية
-</div>
-<div class="spacerMenu  hidden-sm hidden-xs">|</div>
-<div class="dropdown-menu" aria-labelledby="dropdownMenuButton"><div><a href = "pages/20.html" >أرقام الحسابات</a>
-</div>
-<div><a href = "pages/31.html" >أصدقاء الايتام</a>
-</div>
-<div><a href = "pages/30.html" >اكفل يتيم</a></div><div><a href = "pages/56.html" >التوظيف</a>
-</div>
-<div><a href="https://sys.kafel.org.sa/">بوابة الموظفين</a>
-</div>
-<div><a href = "pages/33.html" >تطوع معنا</a>
-</div>
-<div><a href="https://sys.kafel.org.sa/">دخول الكفلاء</a></div><div><a href = "pages/37.html" >شروط قبول الأسر</a>
-</div>
-<div><a href = "pages/32.html" >نموذج تسجيل أسرة</a>
-</div>
-</div>
-</div>
-<a class="toolbarItemR toolbarText  hidden-sm hidden-xs" href="pages/20.html" >الحسابات البنكية</a>
-<div class="spacerMenu hidden-md hidden-sm hidden-xs">|
-</div><a class="toolbarItemR toolbarText  hidden-sm hidden-xs" href="{{ path('contactPage') }}" >اتصل بنا</a>               
-<div class="clear">
-</div>
-</div>
-</div>  
+    <div class="">
+        <div class="row menuC">
+        <div class="col-md-12" >
+            <div id="btnToggle" class="toolbarItemL toolbar101 hidden-lg hidden-md" title="القائمة"></div>
+            <a class="toolbarItemR toolbarText  hidden-sm hidden-xs" href="{{ path('pageIndex') }}" >الرئيسية</a>
+            <div class="spacerMenu hidden-md hidden-sm hidden-xs">|</div>
+            <div class="dropdown toolbarItemR_no  hidden-sm hidden-xs ">
+                <div class="toolbarText toolbarItemR dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    عن  دار الكرم 
+                </div>
+                <div class="spacerMenu  hidden-sm hidden-xs">|</div>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div>
+                    <a href = "{{ path('darAlkaram') }}" >النشأة والتأسيس</a>
+                </div>
+                <div>
+                    <a href = "pages/54.html" >رسالتنا </a>
+                </div>
+                <div>
+                    <a href = "management.html" >  أهدافنا</a>
+                </div>
+                <div>
+                    <a href = "management2.html" >  الفئات المستهدفة</a>
+                </div>
+                <div>
+                    <a href = "pages/36.html" >الهيكل الإداري</a>
+                </div>
+            </div>
+        </div>
+        <a class="toolbarItemR toolbarText  hidden-sm hidden-xs" href="{{ path('kafilPage')}}" >اكفل يتيم</a>
+        <div class="spacerMenu hidden-md hidden-sm hidden-xs">|</div>
+       
+        
+        <div class="dropdown toolbarItemR_no  hidden-sm hidden-xs ">
+            <div class="toolbarText toolbarItemR dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                المشاريع والبرامج     
+            </div>
+            <div class="spacerMenu  hidden-sm hidden-xs">|</div>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div>
+                    <a href = "pages/20.html" > مشاريع في انتظار التمويل</a>
+                </div>
+                <div>
+                    <a href = "pages/31.html" > مشاريع منجزة</a>
+                </div>
+            </div>
+        </div>
+         <div class="dropdown toolbarItemR_no  hidden-sm hidden-xs ">
+            <div class="toolbarText toolbarItemR dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                الجهات الشريكة    
+            </div>
+            <div class="spacerMenu  hidden-sm hidden-xs">|</div>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div>
+                    <a href = "pages/20.html" >  وطنية  </a>
+                </div>
+                <div>
+                    <a href = "pages/31.html" >  دولية</a>
+                </div>
+            </div>
+        </div>
+        <a class="toolbarItemR toolbarText  hidden-sm hidden-xs" href="pages/20.html" > اخبار</a>
+        <div class="spacerMenu hidden-md hidden-sm hidden-xs">|</div>
+        <a class="toolbarItemR toolbarText  hidden-sm hidden-xs" href="pages/20.html" >الحسابات البنكية</a>
+        <div class="spacerMenu hidden-md hidden-sm hidden-xs">|</div>
+            <a class="toolbarItemR toolbarText  hidden-sm hidden-xs" href="{{ path('contactPage') }}" >اتصل بنا</a>               
+            <div class="clear"></div>
+        </div>
+    </div>  
 </div>  
 </div>            
 </div>
 </div> 
 </div> 
-</div> 
+</div>

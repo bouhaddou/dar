@@ -98,7 +98,7 @@ class AppController extends AbstractController
                             'text/html'
                         )
                         ;
-
+                            
                         $mailer->send($message);
 
             return $this->redirectToRoute('contactPage');
@@ -109,6 +109,24 @@ class AppController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/darALKaram", name="darAlkaram")
+     */
+    public function darAlkaram()
+    {
+        return $this->render('pages/darAlKaram.html.twig', [
+        ]);
+    }
+
+     /**
+     * @Route("/kafil", name="kafilPage")
+     */
+    public function Kafala( OrphelinRepository $repo)
+    {
+        return $this->render('pages/kafil.html.twig', [
+            'orphelins' => $repo->findAll()
+        ]);
+    }
     
 
 }
