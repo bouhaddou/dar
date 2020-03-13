@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Kafala index{% endblock %}
+
+{% block body %}
+    <h1>Kafala index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>SetAtdebut</th>
+                <th>Type</th>
+                <th>Prix</th>
+                <th>Periode</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for kafala in kafalas %}
+            <tr>
+                <td>{{ kafala.id }}</td>
+                <td>{{ kafala.setAtdebut ? kafala.setAtdebut|date('Y-m-d') : '' }}</td>
+                <td>{{ kafala.type }}</td>
+                <td>{{ kafala.prix }}</td>
+                <td>{{ kafala.periode }}</td>
+                <td>
+                    <a href="{{ path('kafala_show', {'id': kafala.id}) }}">show</a>
+                    <a href="{{ path('kafala_edit', {'id': kafala.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('kafala_new') }}">Create new</a>
+{% endblock %}

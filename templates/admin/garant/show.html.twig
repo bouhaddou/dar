@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Garant{% endblock %}
+
+{% block body %}
+    <h1>Garant</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ garant.id }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ garant.firstName }}</td>
+            </tr>
+            <tr>
+                <th>LastName</th>
+                <td>{{ garant.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Paye</th>
+                <td>{{ garant.paye }}</td>
+            </tr>
+            <tr>
+                <th>SetAt</th>
+                <td>{{ garant.setAt ? garant.setAt|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ garant.email }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ garant.phone }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ garant.adresse }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('garant_index') }}">back to list</a>
+
+    <a href="{{ path('garant_edit', {'id': garant.id}) }}">edit</a>
+
+    {{ include('garant/_delete_form.html.twig') }}
+{% endblock %}

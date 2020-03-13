@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}hello!{% endblock %}
+
+{% block body %}
+{% include "partials/slider.html.twig" %}
+
+<div class="newThemeHeader mb-3">
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-12 text-center newThemeHeaderIn mb-5">اتصل بنا</div>
+        </div>
+    </div>
+</div><br>
+<div class="mt-3">
+    <iframe allowfullscreen="" frameborder="0" height="450" width="100%" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7431.381296719833!2d39.874639!3d21.362694!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3ce66f409ae2b%3A0x4bbdabd298e221e8!2z2YXYpNiz2LPYqSDZg9in2YHZhCDZhNix2LnYp9mK2Kkg2KfZhNij2YrYqtin2YUg2KjZhdmG2LfZgtipINmF2YPYqSDYp9mE2YXZg9ix2YXYqQ!5e0!3m2!1sar!2ssa!4v1551000984224" style="border:0" ></iframe>
+</div>
+<div class="container mt-2">
+<div id="forms_1 mt-3" class="col-md-12 col-sm-12 col-xs-12 bootstrap_noPadding forms_rendarV">
+    <div class="thumbnail block_1"> 
+        <div class="caption">
+<form action="{{ path('contactPage')}}" method="post" id="form-1-form" accept-charset="UTF-8"><div>
+<div class="forms_head">اتصل بنا</div><div class="form-item form-type-textfield form-item-name">
+  <label for="edit-name">الإسم <span class="form-required" title="This field is required.">*</span></label>
+ <input required type="text" id="edit-name" name="nom" value="" size="auto" maxlength="128" class="form-text required">
+</div>
+<div class="form-item form-type-textfield form-item-mob">
+  <label for="edit-mob">الجوال <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" id="edit-mob" name="phone" value="" size="auto" maxlength="128" class="form-text required">
+<div class="description">رقم الجوال بصيغة دولية مثل: 212+2xxxxxxxxxx</div>
+</div>
+<div class="form-item form-type-textfield form-item-mail">
+  <label for="edit-mail">البريد الإلكتروني <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" id="edit-mail" name="email" value="" size="auto" maxlength="128" class="form-text required">
+</div>
+
+<div class="form-item form-type-textfield form-item-title">
+  <label for="edit-title">عنوان الرسالة <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" id="edit-title" name="objet" value="" size="auto" maxlength="128" class="form-text required">
+</div>
+<div class="form-item form-type-textarea form-item-notes">
+  <label for="edit-notes">نص الرسالة <span class="form-required" title="This field is required.">*</span></label>
+ <div class="form-textarea-wrapper resizable textarea-processed resizable-textarea">
+ <textarea id="edit-notes" name="message" cols="auto" rows="3" class="form-textarea required" style="opacity: 1; height: 77px;"></textarea><div class="grippie"></div></div>
+</div>
+<input type="submit" id="edit-submit-button" name="op" value="أرسل" class="form-submit">
+<input type="hidden" name="form_build_id" value="form-c0AQ6Co1rwlnoB7tBjtD5xcElWaAqbxxMNUxUw8ysu8">
+<input type="hidden" name="form_id" value="form_1_form">
+</div></form>   </div>     </div>
+    </div></div>
+   
+
+{% endblock %}

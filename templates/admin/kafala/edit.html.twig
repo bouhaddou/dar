@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Kafala{% endblock %}
+
+{% block body %}
+    <h1>Edit Kafala</h1>
+
+    {{ include('kafala/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('kafala_index') }}">back to list</a>
+
+    {{ include('kafala/_delete_form.html.twig') }}
+{% endblock %}

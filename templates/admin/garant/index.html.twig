@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Garant index{% endblock %}
+
+{% block body %}
+    <h1>Garant index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Paye</th>
+                <th>SetAt</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Adresse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for garant in garants %}
+            <tr>
+                <td>{{ garant.id }}</td>
+                <td>{{ garant.firstName }}</td>
+                <td>{{ garant.lastName }}</td>
+                <td>{{ garant.paye }}</td>
+                <td>{{ garant.setAt ? garant.setAt|date('Y-m-d') : '' }}</td>
+                <td>{{ garant.email }}</td>
+                <td>{{ garant.phone }}</td>
+                <td>{{ garant.adresse }}</td>
+                <td>
+                    <a href="{{ path('garant_show', {'id': garant.id}) }}">show</a>
+                    <a href="{{ path('garant_edit', {'id': garant.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('garant_new') }}">Create new</a>
+{% endblock %}

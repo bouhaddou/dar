@@ -1,0 +1,36 @@
+<div class="front_3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12  col-sm-12 col-xs-12 text-center">
+                <div class="text-center newThemeHeaderIn " style="margin-bottom: 15px;"> اكفل يتيم</div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 text-center front_3_1 front_3_1_0 mt-2">
+                <div class="owl-carousel owl-carousel-projects owl-rtl owl-drag "> 
+                {% for orphelin in orphelins %}
+                    <div class="list_theme_19">
+                        <div class="thumbnail block_1"> 
+                            <img style="border-radius: 50%;" src="{{ orphelin.image }}"  class="team-img">
+                            <div class="caption">
+                                <h3 class="list_theme_19_title"><a href="projects/21.html"> {{ orphelin.getFullName }}</a></h3>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="list_theme_19_title">
+                         
+
+                                العمر :    {{ orphelin.getAge }}  </div>
+                                <div class="list_theme_19_title">
+                         
+
+                                تاريخ الازدياد :    {{ orphelin.setAt|date('Y-m-d') }}  </div>
+                            <a class="list_theme_19_more" href="projects/21.html">أكفله الأن </a>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-12  col-sm-12 col-xs-12 text-center">
+                <a class="front_3_tab" href="p-rojects.html"></a>
+            </div>
+        </div>
+    </div>
+</div>

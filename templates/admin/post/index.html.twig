@@ -1,0 +1,59 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Annonces{% endblock %}
+
+{% block body %}
+ 
+   <div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Gestion des Annonces</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item "><a href="{{ path('admin_dashboard') }}">Table de bord</a></li>
+              <li class="breadcrumb-item active">Annonces</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+  <div class="container">
+    <h1 class="text-center mt-3 mb-2">Liste des Annonces</h1>
+    <a class="float-right btn btn-success mb-2" href="{{ path('post_new') }}"><i class="fas fa-plus"></i> Ajouter une Annonce</a>
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Titre</th>
+                <th class="text-center">Description</th>
+                <th class="text-center">Image</th>
+                <th class="text-center">Date </th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                <td>{{ post.id}}</td>
+                <td>{{ post.titre|slice(0,40) }}</td>
+                <td>{{ post.description|slice(0,50)|raw }}</td>
+                <td class="text-center"><img style="max-height: 50px;border-radius: 20%;" src="{{ asset('/admin/upload/post/'~ post.image) }}" ></td>
+                <td class="text-center">{{ post.setAt ? post.setAt|date('d-m-Y') : '' }}</td>
+                <td>
+                    <a class="text-primary btn" href="{{ path('post_show', {'id': post.id}) }}"><i class="fas fa-eye"></i></a>
+                    <a class="text-success btn"  href="{{ path('post_edit', {'id': post.id}) }}"><i class="fas fa-edit"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+    
+{% endblock %}

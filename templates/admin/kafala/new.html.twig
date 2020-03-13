@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Kafala{% endblock %}
+
+{% block body %}
+    <h1>Create new Kafala</h1>
+
+    {{ include('kafala/_form.html.twig') }}
+
+    <a href="{{ path('kafala_index') }}">back to list</a>
+{% endblock %}

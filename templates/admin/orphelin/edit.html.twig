@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Orphelin{% endblock %}
+
+{% block body %}
+    <h1>Edit Orphelin</h1>
+
+    {{ include('orphelin/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('orphelin_index') }}">back to list</a>
+
+    {{ include('orphelin/_delete_form.html.twig') }}
+{% endblock %}

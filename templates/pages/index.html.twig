@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}hello!{% endblock %}
+
+{% block body %}
+    {% include "partials/slider.html.twig" %}
+    <div class="front_2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 text-right front_2F front_2F_h_1">
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-right newsItemS  owl-carousel bootstrap_noPadding">
+                    {% for post in posts %}
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-right bootstrap_noPadding">
+                            <div class=" col-md-4 hidden-sm hidden-xs text-right imgNews thumbnail bootstrap_noPadding">
+                                <img  src="{{ asset('/admin/upload/post/'~ post.image) }}"  class="team-img team-imgF">
+                            </div>  
+                            <div class="col-md-8 col-sm-12 col-xs-12 text-right ">
+                                <div class="hidden-lg hidden-md col-sm-12 col-xs-12 text-right imgNews thumbnail bootstrap_noPadding">
+                                    <img src="sites/default/files/styles/front_news/public/cover/WhatsApp%20Image%202020-02-29%20at%2012.48.20%20AM%20(4)f243.jpg?itok=L68c3Tsh"  class="team-img ">
+                                </div>
+                                <a class="newsTitle" href="{{ path('newsDetailsPage',{'id' : post.id }) }}">{{ post.titre }}</a>
+                                <div class="newsTeaser">
+                                  {{ post.description|slice(0,280)|raw }}...
+                                </div>
+                                <a class="newsMore" href="{{ path('newsPage') }}"></a>
+                            </div>
+                        </div> 
+                    {% endfor %}
+                    </div>  
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-right newsItemSPagerS bootstrap_noPadding">
+                        <div class="newsItemSPager"></div>           
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "pages/presentation.html.twig" %}
+    <!-- count -->
+    <div class="front_counters">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-3  col-sm-6 col-xs-12 bootstrap_noPadding text-center ">
+                    <div class="front_counters_in">
+                        <div class="front_counters_1 front_counters_1_c1">{{ stats.orphelin }}</div>
+                    </div>
+                    <div class="front_counters_in2">عدد الأيتام المسجلين</div>
+                </div>
+                
+                <div class="col-md-3 col-sm-6 col-xs-12 bootstrap_noPadding text-center ">
+                    <div class="front_counters_in">
+                        <div class="front_counters_1 front_counters_1_c3">{{ stats.familly }}</div>
+                    </div>
+                    <div class="front_counters_in2">عدد الأسر</div>
+                </div>
+    
+                <div class="col-md-3 col-sm-6 col-xs-12 bootstrap_noPadding text-center ">
+                    <div class="front_counters_in">
+                        <div class="front_counters_1 front_counters_1_c4">457</div>
+                    </div>
+                    <div class="front_counters_in2">المستفيدون من عام 1424 هـ</div>
+                </div>
+                
+                <div class="col-md-3 col-sm-6 col-xs-12 bootstrap_noPadding text-center ">
+                    <div class="front_counters_in">
+                        <div class="front_counters_1 front_counters_1_c6">{{ compteur.cpt}}</div>
+                    </div>
+                    <div class="front_counters_in2">زوار الموقع</div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- end conunt -->
+    {# debut  photos #}
+    {% include "pages/images.html.twig" %}
+    {# fin photos #}
+    <!-- psection des news -->
+    <div class="newThemeHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center newThemeHeaderIn">
+                    مشاريع 
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container marketing">
+    <section class="content ">
+        <div class="contentView clearfix pure-form">
+            <div class="row">
+            {%  for projet in projets %}
+                <div class="list_news  col-md-4 col-sm-6 col-xs-12">
+                    <div class="list_theme_1">
+                        <div class="thumbnail block_1"> 
+                            <img src="{{ projet.image }}" class="team-img">       
+                             <div class="caption">
+                            <h3 class="list_theme_1_title">
+                                <a href="news/1729.html"> {{ projet.titre }}</a>
+                            </h3>
+                            <div class="list_theme_1_body">{{ projet.description|slice(0,250)|raw }}</div>
+                                <a class="list_theme_1_more" href="news/1729.html">المزيد</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}      
+            </div>
+        </div>
+    </section>
+</div>
+<!-- fin de section des news -->
+{% include "pages/kafil.html.twig" %}
+{% include "pages/partenaire.html.twig" %}
+{% endblock %}

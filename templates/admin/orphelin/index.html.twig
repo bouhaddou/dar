@@ -1,0 +1,60 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Orphelins{% endblock %}
+
+{% block body %}
+ 
+   <div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Gestion des Orphelins</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item "><a href="{{ path('admin_dashboard') }}">Table de bord</a></li>
+              <li class="breadcrumb-item active">Orphelins</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    <h1 class="text-center mt-3 mb-2">Liste des Orphelins</h1>
+    <a class="float-right btn btn-success mb-2" href="{{ path('orphelin_new') }}"><i class="fas fa-plus"></i> Ajouter une Famille</a>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th class="text-center">Photos</th>
+                <th>Date Création</th>
+                <th>Adresse</th>
+                <th>Genre</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for orphelin in orphelins %}
+            <tr>
+                <td>{{ orphelin.id }}</td>
+                <td>{{ orphelin.firstName }}</td>
+                <td>{{ orphelin.lastName }}</td>
+                <td class="text-center">
+                  <img style="max-height: 50px;border-radius: 50%;" src=" {{ asset('/admin/upload/orphelin/' ~  orphelin.image) }}" /></td>
+                <td>{{ orphelin.setAt ? orphelin.setAt|date('d-m-Y') : '' }}</td>
+                <td>{{ orphelin.adresse|slice(0,50) }}</td>
+                <td>{{ orphelin.genre }}</td>
+                <td>
+                    <a class="text-primary btn" href="{{ path('orphelin_show', {'id': orphelin.id}) }}"><i class="fas fa-eye"></i></a>
+                    <a class="text-success btn"  href="{{ path('orphelin_edit', {'id': orphelin.id}) }}"><i class="fas fa-edit"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
