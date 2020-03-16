@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Garant;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\Orphelin;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Garant|null find($id, $lockMode = null, $lockVersion = null)
@@ -22,19 +23,19 @@ class GarantRepository extends ServiceEntityRepository
     // /**
     //  * @return Garant[] Returns an array of Garant objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function garantfunction(Orphelin $orphelin)
     {
         return $this->createQueryBuilder('g')
-            ->andWhere('g.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('g.id', 'ASC')
+            ->join('g.kafalas','k')
+            ->andWhere('k.Orphelin = :val')
+            ->setParameter('val', $orphelin)
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Garant

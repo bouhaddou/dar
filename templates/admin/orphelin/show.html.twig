@@ -22,33 +22,31 @@
     <hr>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 border">
+            <div class="col-md-5 border ml-2 mr-2 mb-2">
                 <div class="row">
                     <div class="col-md-12">
                         <table class="table table-bordred" dir="rtl">
                         <h4 class="text-center"> معلومات الكافل</h4>
                             <tbody>
-                            {% for kafal in kafala %}
-                            {% for gard in kafal.garant %}
+                             {% for key, garan in garant %}
                                 <tr>
                                     <th class="text-center">الرقم</th>
-                                    <td class="text-center">{{ gard.id }}</td>
+                                    <td class="text-center">{{ garan.id }}</td>
                                 </tr>
                                 <tr>
                                     <th class="text-center">الاسم الأول</th>
-                                    <td class="text-center">{{ gard.name }}</td>
+                                    <td class="text-center">{{ garan.name }}</td>
                                 </tr>
                                 <tr>
                                     <th class="text-center">الاسم الأخير</th>
-                                    <td class="text-center">{{ gard.paye }}</td>
+                                    <td class="text-center">{{ garan.paye }}</td>
                                 </tr>
                                 
                                 <tr>
                                     <th class="text-center">الحالة</th>
-                                    <td class="text-center">{{ gard.email }}</td>
+                                    <td class="text-center">{{ garan.email }}</td>
                                 </tr>
-                                {% endfor %}
-                                {% endfor %}
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
@@ -57,6 +55,26 @@
                         <h4 class="text-center"> معلومات الكفالة</h4>
                             <tbody>
                             {% for kafal in kafala %}
+                                <tr>
+                                    <th class="text-center">الرقم</th>
+                                    <td class="text-center">{{ kafal.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">الاسم الأول</th>
+                                    <td class="text-center">{{ kafal.setAtdebut|date('Y-m-d') }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">الاسم الأخير</th>
+                                    <td class="text-center">{{ kafal.type }}</td>
+                                </tr>
+                                
+                                <tr>
+                                    <th class="text-center">الحالة</th>
+                                    <td class="text-center">{{ kafal.periode }}</td>
+                                </tr>
+                            {% endfor %}
+                           
+                              {% for key, kafal in kafala %}
                                 <tr>
                                     <th class="text-center">الرقم</th>
                                     <td class="text-center">{{ kafal.id }}</td>
@@ -119,6 +137,7 @@
                     </tbody>
                 </table>
             </div>
+           
             <div class="col-md-12 mt-2 text-center">
                 <div class="row" dir="rtl">
                     <div class="col">

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Orphelin;
 use App\Form\OrphelinType;
 use App\Form\EditorphelinType;
+use App\Repository\GarantRepository;
 use App\Repository\KafalaRepository;
 use App\Repository\OrphelinRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -58,13 +59,12 @@ class OrphelinController extends AbstractController
     /**
      * @Route("/{id}/show", name="orphelin_show", methods={"GET"})
      */
-    public function show(Orphelin $orphelin,KafalaRepository $repokafala,$id): Response
+    public function show(Orphelin $orphelin,KafalaRepository $repokafala,GarantRepository $repoGarant,OrphelinRepository $rep): Response
     {
-        $kafala = $repokafala->findByExampleField($id);
-        dd($kafala);
         return $this->render('admin/orphelin/show.html.twig', [
             'orphelin' => $orphelin,
-            'kafala' => $kafala
+            'kafala' => $repokafala->kafalaFunction($orphelin),
+            'garant' => $repoGarant->garantfunction($orphelin)
         ]);
     }
 
