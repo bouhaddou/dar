@@ -1,35 +1,26 @@
 <div class="front_7">
     <div class="container">
         <div class="row">
-
-
             <div class="col-md-12 col-sm-12 col-xs-12 text-center ">
                 <div class="col-md-12 col-sm-12 col-xs-12 text-right bootstrap_noPadding">
-                    <a class="FrontLogo1" href="/media"></a>
+                    <a class="FrontLogo1" href=""></a>
                 </div>
-                <div class="col-md-12 col-sm-12 col-xs-12 text-center bootstrap_noPadding FrontTitleH">
-                    <div class="FrontMImgs">
-                        <a class="lightbox col-md-6 col-sm-6 col-xs-6 text-center thumbnail bootstrap_noPadding" 
-                         href="https://kafel.org.sa/sites/default/files/media/WhatsApp%20Image%202020-03-01%20at%202.46.03%20AM.jpeg"  
-                         title="مبادرة لغة اليتيم الأول">
-                         <img src="https://kafel.org.sa/sites/default/files/styles/front_media/public/media/WhatsApp%20Image%202020-03-01%20at%202.46.03%20AM.jpeg?itok=szS6P1Qp"  class="team-img"></a>
-                         <a class="lightbox col-md-6 col-sm-6 col-xs-6 text-center thumbnail bootstrap_noPadding"  href="https://kafel.org.sa/sites/default/files/media/WhatsApp%20Image%202020-03-01%20at%202.46.04%20AM%20%281%29.jpeg"  title="مبادرة لغة اليتيم الأول">
-                         <img src="https://kafel.org.sa/sites/default/files/styles/front_media/public/media/WhatsApp%20Image%202020-03-01%20at%202.46.04%20AM%20%281%29.jpeg?itok=0xtRklK9"  class="team-img"></a>
-                         <a class="lightbox col-md-6 col-sm-6 col-xs-6 text-center thumbnail bootstrap_noPadding"  href="https://kafel.org.sa/sites/default/files/media/WhatsApp%20Image%202020-03-01%20at%202.46.04%20AM%20%282%29.jpeg"  title="مبادرة لغة اليتيم الأول">
-                         <img src="https://kafel.org.sa/sites/default/files/styles/front_media/public/media/WhatsApp%20Image%202020-03-01%20at%202.46.04%20AM%20%282%29.jpeg?itok=KP-DijOr"  class="team-img"></a>
-                         <a class="lightbox col-md-6 col-sm-6 col-xs-6 text-center thumbnail bootstrap_noPadding"  href="https://kafel.org.sa/sites/default/files/media/WhatsApp%20Image%202020-03-01%20at%202.46.04%20AM.jpeg"  title="مبادرة لغة اليتيم الأول">
-                         <img src="https://kafel.org.sa/sites/default/files/styles/front_media/public/media/WhatsApp%20Image%202020-03-01%20at%202.46.04%20AM.jpeg?itok=O3uUscu-"  class="team-img">
-                        </a>
-                    </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 text-center bootstrap_noPadding FrontTitleH"> 
+                <div class="list_view_1_body_Imgs">
+                 {% for post in posts %} 
+                        <div class="col-md-4 col-sm-4 col-xs-12 text-center ">
+                            <a class="lightbox  thumbnail " href="{{ asset('/admin/upload/post/'~ post.image) }}"  class="team-img" title="   {{ post.titre }}">
+                            <img style="max-height: 1500px; max-width: 250px;height: 150px;width: 250px;" src="{{ asset('/admin/upload/post/'~ post.image) }}" class="team-img"></a>
+                        </div>
+                 {% endfor %}      
                 </div>
-                <div class="col-md-12 col-sm-12 col-xs-12 text-center bootstrap_noPadding">
-                    <div class="col-md-12 col-sm-12 col-xs-12 text-center bootstrap_noPadding">
-                        <a class="FrontTitle" href="/media/335">مبادرة لغة اليتيم الأول</a>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 text-center mt-5"><br>
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-center ">
+                      <a class="list_theme_1_more h4 text-primary mt-3" href=""> المزيد...</a>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 

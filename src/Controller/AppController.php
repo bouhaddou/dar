@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Post;
 use App\Entity\Contact;
 use App\Entity\Compteur;
+use App\Entity\Garant;
+use App\Entity\Kafala;
 use App\Form\ContactType;
 use App\Repository\PostRepository;
 use App\Repository\ProjetsRepository;
@@ -26,24 +28,24 @@ class AppController extends AbstractController
         $zz = $this->getDoctrine()->getManager();
         $orphelin = $zz->createQuery(" SELECT count(c) FROM App\Entity\Orphelin c ")->getSingleScalarResult();
         $familly = $zz->createQuery(" SELECT count(f) FROM App\Entity\Familly f ")->getSingleScalarResult();
+        $orphelinfalse = $zz->createQuery(" SELECT count(c) FROM App\Entity\Orphelin c where c.status = false ")->getSingleScalarResult();
          if(($cpt == null) )
          {
-        $com = new Compteur();
-         $com->setCpt(1);
-         $zz->persist($com);
-         $zz->flush();
+            $com = new Compteur();
+            $com->setCpt(1);
+            $zz->persist($com);
+            $zz->flush();
         }else{
             $cpt->setCpt($cpt->getCpt() + 1);
         }
         $zz->persist($cpt);
             $zz->flush();
-
         return $this->render('pages/index.html.twig', [
-          'posts' => $repoPost->findSomePost(4),
+          'posts' => $repoPost->findSomePost(6),
           'projets' => $repoProjet->findSomeProjets(3),
-          'orphelins' => $repoOrphelin->findAll(4),
+          'orphelins' => $repoOrphelin->findByStatus(2),
           'compteur' => $cpt,
-          'stats'  => compact('orphelin','familly'),
+          'stats'  => compact('orphelin','familly','orphelinfalse'),
         ]);
     }
 
@@ -63,7 +65,7 @@ class AppController extends AbstractController
     public function newsDetails(PostRepository $repo,$id)
     {
         return $this->render('pages/newsDetails.html.twig', [
-            'posts' => $repo->findBy([],['id' => 'DESC'])
+            'posts' => $repo->findOneBy(['id' => $id])
         ]);
     }
 
@@ -121,12 +123,77 @@ class AppController extends AbstractController
      /**
      * @Route("/kafil", name="kafilPage")
      */
-    public function Kafala( OrphelinRepository $repo)
+    public function Kafala(OrphelinRepository $repo)
     {
+        $manager= $this->getDoctrine()->getManager();
+        $orphelin = $manager->createQuery(" SELECT count(c) FROM App\Entity\Orphelin c where c.status = false ")->getSingleScalarResult();
         return $this->render('pages/kafil.html.twig', [
-            'orphelins' => $repo->findAll()
+            'orphelins' => $repo->findByStatus(200),
+            'cppt' => $orphelin
         ]);
     }
-    
+         /**
+     * @Route("/demande/{id}", name="damandePage")
+     */
+    public function demande(OrphelinRepository $repo,$id,Request $request)
+    {
+        $manager= $this->getDoctrine()->getManager();
+        $orphelin =  $repo->findOneBy(['id' => $id]);
+        if($request->getMethod() === 'POST')
+        {
 
+            $garant =new Garant();
+            $garant->setName($request->get('name'))
+                    ->setPhone($request->get('phone'))
+                    ->setPaye($request->get('paye'))
+                    ->setEmail($request->get('email'));
+            $manager->persist($garant);
+            $kafala = new Kafala();
+            $date = new \DateTime($request->get('setAt'));
+            $kafala->setSetAtdebut($date)
+                    ->setType($request->get('type'))
+                    ->setPeriode($request->get('periode'))
+                    ->setPrix($request->get('prix'))
+                    ->setObservation($request->get('obser'))
+                    ->setPour($request->get('pour'))
+                    ->setOrphelin($orphelin)
+                    ->setGarant($garant);
+            $manager->persist($kafala);
+            $orphelin->setStatus(true);
+            $manager->persist($orphelin);
+        
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                '  شكرا لكم لقد تم تكفيل اليثم بنجاح '
+            );
+
+            return $this->redirectToRoute('kafilPage');
+        
+        }
+        return $this->render('pages/demande.html.twig', [
+            'orphelin' => $orphelin
+        ]);
+    }
+
+    /**
+     * @Route("/projet", name="projetpage")
+     */
+    public function projet(ProjetsRepository $repoProjet)
+    {
+        return $this->render('pages/projets.html.twig', [
+            'projets' => $repoProjet->findSomeProjets(500),
+        ]);
+    }
+     /**
+     * @Route("/projet/{id}", name="projetDetailsPage")
+     */
+    public function projetdetails(ProjetsRepository $repoProjet,$id)
+    {
+
+        return $this->render('pages/projetdetails.html.twig', [
+            'projets' => $repoProjet->findOneBy(['id' => $id])
+        ]);
+    }
 }

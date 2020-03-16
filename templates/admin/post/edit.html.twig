@@ -1,13 +1,85 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/base.html.twig' %}
 
-{% block title %}Edit Post{% endblock %}
+{% block title %}Edit Familly{% endblock %}
 
 {% block body %}
-    <h1>Edit Post</h1>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Gestion Famille</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item "><a href="{{ path('admin_dashboard') }}">Table de bord</a></li>
+              <li class="breadcrumb-item" ><a href="{{ path('familly_index') }}">Famille</a></li>
+              <li class="breadcrumb-item active">Modifier</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    <div class="container">
+    <h1 class="text-center" >Modification des Information</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="button" id="add_image" class="btn btn-info"><i class="fas fa-plus"></i> Ajouter image</button>
+    <br><br>
+    <button class="btn btn-success mt-3 mb-3"><i class="fas fa-plus"></i>{{ button_label|default('Modifier') }}</button>
+    {{ form_end(form) }}
 
-    {{ include('post/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('post_index') }}">back to list</a>
 
-    {{ include('post/_delete_form.html.twig') }}
+    {{ include('admin/post/_delete_form.html.twig') }}
+ 
+    </div>
+{% endblock %}
+{%  block _post_images_widget %}
+	<p class="">
+		vous pouvez ajouter vos images ici !</p>
+	{{ form_widget(form) }}
+
+{% endblock  %}
+
+{%  block _post_images_entry_row %}
+<div class="row" id="block_{{id}}">
+	<div class="col-md-5 mt-2">
+		{{ form_widget(form.lien) }}
+	</div>
+	<div class="col-md-5 mt-2">
+    <div class="row">
+      <div class="col-md-8 mb-2">
+      	  {{ form_widget(form.caption) }}
+      </div>
+      <div class="col-md-4">
+	    	<button type="button" data-action="delete" data-target="#block_{{id}}" class="btn btn-danger mb-2">X</button>
+      </div>
+    </div>
+	</div>
+</div>
+{% endblock  %}
+
+{% block javascripts %}
+<script>
+	$('#add_image').click(function(){
+	         const index = +$('#compteur').val();
+	         const tmp = $('#post_images').data('prototype').replace(/__name__/g,index);
+	         $('#compteur').val(index + 1);
+	         $('#post_images').append(tmp);
+	         handlendelete();
+	     });
+	    function handlendelete(){
+	        $('button[data-action="delete"]').click(function(){
+	            const target= this.dataset.target;
+	            $(target).remove();
+	        });
+	    }
+	    function updateCompteur()
+	    {
+	        const count=+$('#post_images div.form-group').length;
+	        $('#compteur').val(count);
+	    }
+	   updateCompteur();
+	    handlendelete();
+</script>
 {% endblock %}

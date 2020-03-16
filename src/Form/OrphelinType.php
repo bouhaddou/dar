@@ -33,22 +33,39 @@ class OrphelinType extends AbstractType
         $builder
             ->add('firstName',TextType::class,$this->getConfig("Prénom  (*) :","Tapez  le Prénom de Orphelin",true))
             ->add('lastName',TextType::class,$this->getConfig("Nom  (*) :","Tapez  le Nom de Orphelin",true))
-            ->add('image', FileType::class, $this->getConfig("Url de  Photo (*) :", "Donne l'adresse de la photo",false))
+            ->add('image', FileType::class, $this->getConfig("Url de  Photo (*) :", "Donne l'adresse de la photo",true))
             ->add('setAt',DateType::class,$this->getConfig("Date de Naissance (*) :","Tapez  la date de naissance ",true))
-            ->add('adresse',TextareaType::class, $this->getConfig("Adresse (optionnel) : ", "Tapez Adresse de  l'Orphelin",false))
+            ->add('adresse',TextareaType::class, $this->getConfig("Adresse (optionnel) : ", "Tapez Adresse de  l'Orphelin",true))
             ->add('genre',  ChoiceType::class, [
                 'choices'  => [
                     '' => null,
-                    'Masculin' => 'male',
-                    'fiminin' => 'female',
+                    'ذكر' => 'male',
+                    'انثى' => 'female',
                 ],
-                'label' => 'Genre (*) :'
+                'label' => 'الجنس (*) :',
+               
             ])
             ->add('familly',EntityType::class, [
                 'class' => Familly::class,
                 'choice_label' => 'nom',
                 'label' => 'Parent :'
             ])
+            ->add('status',  ChoiceType::class, 
+                array(
+                    'label' => 'الحالة',
+                    'required' => true,
+                    'translation_domain' => 'messages',
+                    'choices' => array(
+                    'في انتظار الكفالة' => false,
+                    'مكفل' => true
+                    ),
+                    'expanded' => true,
+                    'multiple' => false,
+                    'data' => null,
+                    'attr' => array( 'class' => 'form_f' ),
+                )
+                
+            )
         ;
     }
     public function configureOptions(OptionsResolver $resolver)

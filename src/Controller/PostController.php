@@ -35,7 +35,23 @@ class PostController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $entityManager = $this->getDoctrine()->getManager();
+
+
+            foreach( $post->getImages() as $image)
+            {
+                $file = $image->getLien();
+                $filename = md5(uniqid()) . '.' . $file->guessExtension();
+                $file->move($this->getParameter('upload_directory2'), $filename);
+                $image->setLien($filename);
+
+                $image->setPost ($post);
+                $entityManager->persist($image);
+            }
+
+
+           
             $file = $form['image']->getData();
             $filename = md5(uniqid()) . '.' . $file->guessExtension();
             $file->move($this->getParameter('upload_directory2'), $filename);
@@ -71,7 +87,27 @@ class PostController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            foreach( $post->getImages() as $image)
+            {
+                $file = $image->getLien();
+                $filename = md5(uniqid()) . '.' . $file->guessExtension();
+                $file->move($this->getParameter('upload_directory2'), $filename);
+                $image->setLien($filename);
+
+                $image->setPost ($post);
+                $entityManager->persist($image);
+            }
+
+            $file = $form['image']->getData();
+            $filename = md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move($this->getParameter('upload_directory2'), $filename);
+            $post->setImage($filename);
+            $entityManager->persist($post);
+            $entityManager->flush();
+
+            $entityManager->flush();
 
             return $this->redirectToRoute('post_index');
         }

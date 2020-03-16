@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\OrphelinRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Orphelin
 {
@@ -60,8 +61,24 @@ class Orphelin
      */
     private $familly;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $status;
+
     public function getFullName(){
         return "{$this->firstName} {$this->lastName}";
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setStatusValue()
+    {
+        if(empty($this->status))
+        {
+        $this->status = false;
+        }
     }
 
     public function getAge(){
@@ -193,6 +210,18 @@ class Orphelin
     public function setFamilly(?Familly $familly): self
     {
         $this->familly = $familly;
+
+        return $this;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    public function setStatus( $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }

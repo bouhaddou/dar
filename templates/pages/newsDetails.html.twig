@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}News!{% endblock %}
+{% block title %}الاخبار!{% endblock %}
 
 {% block body %}
-    {% include "partials/slider.html.twig" %}
-
+<br><br>
 <div class="newThemeHeader">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 text-center newThemeHeaderIn">الأمين العام يلتقى المشاركون في مبادرة بناء قدراتنا 
+            <div class="col-md-12 text-center newThemeHeaderIn ">
+                    {{ posts.titre }} 
             </div>
         </div>
     </div>
@@ -17,19 +17,31 @@
 <section class="content ">
     <div class="contentView clearfix pure-form">
         <div class="col-md-12 col-sm-12 col-xs-12 list_view_1 bootstrap_noPadding" >
-            <div class="thumbnail block_1"> 
-                <img src="https://kafel.org.sa/sites/default/files/styles/list_theme_1/public/cover/WhatsApp%20Image%202020-02-26%20at%205.37.17%20PM.jpeg?itok=nika1aJ1"  class="team-img">
+            <div class="thumbnail block_1"> <br>
+                <img <img src="{{ asset('/admin/upload/post/'~ posts.image) }}"  class="team-img"  class="team-img"><br>
                 <div class="caption">
-                    <div class="list_view_1_body">المصدر :
-                        <a href="" target="_blank">قسم العلاقات العامة والإعلام</a>
-                        <p><span style="font-size:20px;">فضيلة الأمين العام الشيخ الدكتور عبد العزيز الفايز يقدم شكره وتقديره لأعضاء #كافل المشاركين بمبادرة #بناءقدراتنابناء_مستقبلهم على مشاركتهم المميزة، ويتسلم درع المبادرة من الأعضاء.</span></p>
+                    <div class="list_view_1_body">التاريخ:
+                        <a href="" target="_blank">{{ posts.setAt|date('Y-m-d') }}</a>
+                        <p><span style="font-size:20px;">
+                            {{ posts.description|raw }}
+                        </span></p>
                     </div>
                     <div class="list_view_1_body_Imgs">
                     </div>
                 </div>
+                <div class="list_view_1_body_Imgs">
+                    {% for image in  posts.images %}    
+                        <div class="col-md-2 col-sm-4 col-xs-6 text-center ">
+                            <a class="lightbox  thumbnail " href="{{ asset('/admin/upload/post/'~ image.lien) }}"  class="team-img" title="مبادرة لغة اليتيم الأول">
+                            <img src="{{ asset('/admin/upload/post/'~ image.lien) }}" class="team-img"></a>
+                        </div>
+                    {% endfor %}
+                       
+                </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 </div>
+
  {% endblock %}

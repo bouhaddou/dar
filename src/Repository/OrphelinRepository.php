@@ -22,19 +22,31 @@ class OrphelinRepository extends ServiceEntityRepository
     // /**
     //  * @return Orphelin[] Returns an array of Orphelin objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findByStatus($value)
     {
         return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('o.status = :val')
+            ->setParameter('val', false)
             ->orderBy('o.id', 'ASC')
-            ->setMaxResults(10)
+            ->setMaxResults($value)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
+    public function findByStatus2($value)
+    {
+        return $this->createQueryBuilder('o')
+            ->andWhere('o.status = :val')
+            ->setParameter('val', true)
+            ->orderBy('o.id', 'ASC')
+            ->setMaxResults($value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
 
     /*
     public function findOneBySomeField($value): ?Orphelin

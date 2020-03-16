@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Orphelin;
 use App\Form\OrphelinType;
+use App\Form\EditorphelinType;
+use App\Repository\KafalaRepository;
 use App\Repository\OrphelinRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/admin/orphelin")
@@ -54,12 +56,15 @@ class OrphelinController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="orphelin_show", methods={"GET"})
+     * @Route("/{id}/show", name="orphelin_show", methods={"GET"})
      */
-    public function show(Orphelin $orphelin): Response
+    public function show(Orphelin $orphelin,KafalaRepository $repokafala,$id): Response
     {
-        return $this->render('orphelin/show.html.twig', [
+        $kafala = $repokafala->findByExampleField($id);
+        dd($kafala);
+        return $this->render('admin/orphelin/show.html.twig', [
             'orphelin' => $orphelin,
+            'kafala' => $kafala
         ]);
     }
 
@@ -68,7 +73,7 @@ class OrphelinController extends AbstractController
      */
     public function edit(Request $request, Orphelin $orphelin): Response
     {
-        $form = $this->createForm(OrphelinType::class, $orphelin);
+        $form = $this->createForm(EditorphelinType::class, $orphelin);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -77,7 +82,7 @@ class OrphelinController extends AbstractController
             return $this->redirectToRoute('orphelin_index');
         }
 
-        return $this->render('orphelin/edit.html.twig', [
+        return $this->render('admin/orphelin/edit.html.twig', [
             'orphelin' => $orphelin,
             'form' => $form->createView(),
         ]);

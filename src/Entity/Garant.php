@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\GarantRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Garant
 {
@@ -21,22 +22,15 @@ class Garant
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $firstName;
+    private $Name;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $lastName;
-
+   
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $paye;
 
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $setAt;
+ 
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -49,11 +43,6 @@ class Garant
     private $phone;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $adresse;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Kafala", mappedBy="garant")
      */
     private $kafalas;
@@ -63,36 +52,25 @@ class Garant
         $this->kafalas = new ArrayCollection();
     }
 
- 
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getFirstName(): ?string
+    public function getName(): ?string
     {
-        return $this->firstName;
+        return $this->Name;
     }
 
-    public function setFirstName(string $firstName): self
+    public function setName(string $Name): self
     {
-        $this->firstName = $firstName;
+        $this->Name = $Name;
 
         return $this;
     }
 
-    public function getLastName(): ?string
-    {
-        return $this->lastName;
-    }
 
-    public function setLastName(string $lastName): self
-    {
-        $this->lastName = $lastName;
-
-        return $this;
-    }
 
     public function getPaye(): ?string
     {
@@ -106,17 +84,6 @@ class Garant
         return $this;
     }
 
-    public function getSetAt(): ?\DateTimeInterface
-    {
-        return $this->setAt;
-    }
-
-    public function setSetAt(\DateTimeInterface $setAt): self
-    {
-        $this->setAt = $setAt;
-
-        return $this;
-    }
 
     public function getEmail(): ?string
     {
@@ -142,17 +109,6 @@ class Garant
         return $this;
     }
 
-    public function getAdresse(): ?string
-    {
-        return $this->adresse;
-    }
-
-    public function setAdresse(?string $adresse): self
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Kafala[]

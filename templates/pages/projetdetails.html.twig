@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}المشاريع المنجزة !{% endblock %}
+
+{% block body %}
+<br><br>
+<div class="newThemeHeader">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center newThemeHeaderIn ">
+                    {{ projets.titre }} 
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container marketing">
+<section class="content ">
+    <div class="contentView clearfix pure-form">
+        <div class="col-md-12 col-sm-12 col-xs-12 list_view_1 bootstrap_noPadding" >
+            <div class="thumbnail block_1"> <br>
+                <img <img src="{{ asset('/admin/upload/projet/'~ projets.image) }}"  class="team-img"  class="team-img"><br>
+                <div class="caption">
+                    <div class="list_view_1_body">التاريخ:
+                        <a href="" target="_blank">{{ projets.setAt|date('Y-m-d') }}</a>
+                        <p><span style="font-size:20px;">
+                            {{ projets.description|raw }}
+                        </span></p>
+                    </div>
+                    <div class="list_view_1_body_Imgs">
+                    </div>
+                </div>
+                 <div class="list_view_1_body_Imgs"><div class="col-md-2 col-sm-4 col-xs-6 text-center ">
+                 <a class="lightbox  thumbnail " href="https://kafel.org.sa/sites/default/files/media/WhatsApp%20Image%202020-03-01%20at%202.46.03%20AM.jpeg" title="مبادرة لغة اليتيم الأول"><img src="https://kafel.org.sa/sites/default/files/styles/front_media/public/media/WhatsApp%20Image%202020-03-01%20at%202.46.03%20AM.jpeg?itok=szS6P1Qp" class="team-img"></a></div><div class="col-md-2 col-sm-4 col-xs-6 text-center "><a class="lightbox  thumbnail " href="https://kafel.org.sa/sites/default/files/media/WhatsApp%20Image%202020-03-01%20at%202.46.04%20AM%20%281%29.jpeg" title="مبادرة لغة اليتيم الأول"><img src="https://kafel.org.sa/sites/default/files/styles/front_media/public/media/WhatsApp%20Image%202020-03-01%20at%202.46.04%20AM%20%281%29.jpeg?itok=0xtRklK9" class="team-img"></a></div><div class="col-md-2 col-sm-4 col-xs-6 text-center "><a class="lightbox  thumbnail " href="https://kafel.org.sa/sites/default/files/media/WhatsApp%20Image%202020-03-01%20at%202.46.04%20AM%20%282%29.jpeg" title="مبادرة لغة اليتيم الأول"><img src="https://kafel.org.sa/sites/default/files/styles/front_media/public/media/WhatsApp%20Image%202020-03-01%20at%202.46.04%20AM%20%282%29.jpeg?itok=KP-DijOr" class="team-img"></a></div><div class="col-md-2 col-sm-4 col-xs-6 text-center "><a class="lightbox  thumbnail " href="https://kafel.org.sa/sites/default/files/media/WhatsApp%20Image%202020-03-01%20at%202.46.04%20AM.jpeg" title="مبادرة لغة اليتيم الأول"><img src="https://kafel.org.sa/sites/default/files/styles/front_media/public/media/WhatsApp%20Image%202020-03-01%20at%202.46.04%20AM.jpeg?itok=O3uUscu-" class="team-img"></a>
+                 </div></div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+ {% endblock %}

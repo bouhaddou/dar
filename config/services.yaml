@@ -6,6 +6,7 @@
 parameters:
     upload_directory: '%kernel.project_dir%/public/admin/upload/orphelin/'
     upload_directory2: '%kernel.project_dir%/public/admin/upload/post/'
+    upload_directory3: '%kernel.project_dir%/public/admin/upload/projet/'
  
 
 services:

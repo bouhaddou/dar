@@ -18,7 +18,8 @@ class FamillyType extends AbstractType
             'label' => $label, 
             'required'    => $rool,
             'attr' => [
-                'placeholder' => $place
+                'placeholder' => $place,
+                
                
             ]
         ];

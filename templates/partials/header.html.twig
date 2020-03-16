@@ -67,16 +67,16 @@
                     <a href = "{{ path('darAlkaram') }}" >النشأة والتأسيس</a>
                 </div>
                 <div>
-                    <a href = "pages/54.html" >رسالتنا </a>
+                    <a href = "" >رسالتنا </a>
                 </div>
                 <div>
-                    <a href = "management.html" >  أهدافنا</a>
+                    <a href = "" >  أهدافنا</a>
                 </div>
                 <div>
-                    <a href = "management2.html" >  الفئات المستهدفة</a>
+                    <a href = "" >  الفئات المستهدفة</a>
                 </div>
                 <div>
-                    <a href = "pages/36.html" >الهيكل الإداري</a>
+                    <a href = "" >الهيكل الإداري</a>
                 </div>
             </div>
         </div>
@@ -91,10 +91,10 @@
             <div class="spacerMenu  hidden-sm hidden-xs">|</div>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <div>
-                    <a href = "pages/20.html" > مشاريع في انتظار التمويل</a>
+                    <a href = "{{ path('projetpage') }}" > مشاريع في انتظار التمويل</a>
                 </div>
                 <div>
-                    <a href = "pages/31.html" > مشاريع منجزة</a>
+                    <a href = "" > مشاريع منجزة</a>
                 </div>
             </div>
         </div>
@@ -105,16 +105,16 @@
             <div class="spacerMenu  hidden-sm hidden-xs">|</div>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <div>
-                    <a href = "pages/20.html" >  وطنية  </a>
+                    <a href = "" >  وطنية  </a>
                 </div>
                 <div>
-                    <a href = "pages/31.html" >  دولية</a>
+                    <a href = "" >  دولية</a>
                 </div>
             </div>
         </div>
-        <a class="toolbarItemR toolbarText  hidden-sm hidden-xs" href="pages/20.html" > اخبار</a>
+        <a class="toolbarItemR toolbarText  hidden-sm hidden-xs" href="{{ path('newsPage') }}" > اخبار</a>
         <div class="spacerMenu hidden-md hidden-sm hidden-xs">|</div>
-        <a class="toolbarItemR toolbarText  hidden-sm hidden-xs" href="pages/20.html" >الحسابات البنكية</a>
+        <a class="toolbarItemR toolbarText  hidden-sm hidden-xs" href="" >الحسابات البنكية</a>
         <div class="spacerMenu hidden-md hidden-sm hidden-xs">|</div>
             <a class="toolbarItemR toolbarText  hidden-sm hidden-xs" href="{{ path('contactPage') }}" >اتصل بنا</a>               
             <div class="clear"></div>
@@ -126,3 +126,29 @@
 </div> 
 </div> 
 </div>
+
+
+{%  for label, messages in app.flashes %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<div class="alert alert-success border m-2 mt-3">
+					<div class="">
+						{# <img style="max-width: 50px; max-height: 50px;" src="{{ asset('/images/info.png') }}" class="rounded mr-2" alt="..."> #}
+						{# <strong class="mr-auto">Message</strong> #}
+						<small class="" dir="rtl">قبل دقيقة</small>
+					</div> 
+					{% for message in messages %}
+					<div class="mt-3 text-center text-dark h3">
+							Salut,  <span class=" " dir="rtl" >{{ message }}</span>
+					</div> 
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+    </div>
+
+        
+    {% endfor %}

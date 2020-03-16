@@ -8,7 +8,6 @@
     <div class="page_content">
         <table border="1" align="left">
 <tbody>
-
 <tr>
 <th scope="row"><img title="جمعية العون والإغاثة كفالة-أسرة-أيتام-copy كفالة اليتيم" src="http://alaoun.org/wp-content/uploads/2013/04/كفالة-أسرة-أيتام-copy.jpg" alt="جمعية العون والإغاثة كفالة-أسرة-أيتام-copy كفالة اليتيم" width="170" height="42"></th>
 </tr>
@@ -22,13 +21,22 @@
 </table>
 <ul dir="rtl">
 <li>
-<div style="text-align: justify;">عَنْ مَالِك عَنْ صَفْوَانَ بْنِ سُلَيْمٍ أَنَّهُ بَلَغَهُ أنَّ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ:”<span style="color: #008000;"> أَنَا وَكَافِلُ الْيَتِيمِ لَهُ أَوْ لِغَيْرِهِ فِي الْجَنَّةِ كَهَاتَيْنِ إِذَا اتَّقَى وَأَشَارَ بِإِصْبُعَيْهِ الْوُسْطَى وَالَّتِي تَلِي الْإِبْهَام</span>“<span style="color: #ff0000;">موطأ مالك كتاب الجامع بَاب السُّنَّةِ فِي الشَّعَرِ</span></div>
+<div style="text-align: justify;"><p>عَنْ مَالِك عَنْ صَفْوَانَ بْنِ سُلَيْمٍ أَنَّهُ بَلَغَهُ أنَّ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ:”
+<span style="color: #008000;"> أَنَا وَكَافِلُ الْيَتِيمِ لَهُ أَوْ لِغَيْرِهِ فِي الْجَنَّةِ كَهَاتَيْنِ إِذَا اتَّقَى وَأَشَارَ بِإِصْبُعَيْهِ الْوُسْطَى وَالَّتِي تَلِي الْإِبْهَام</span>“
+<span style="color: #ff0000;">موطأ مالك كتاب الجامع بَاب السُّنَّةِ فِي الشَّعَرِ</span></p></div>
 </li>
 <li style="text-align: justify;">
-<div>&nbsp;عَنْ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ”<span style="color: #008000;"> وَكَافِلُ الْيَتِيمِ فِي الْجَنَّةِ هَكَذَا وَقَالَ بِإِصْبَعَيْهِ السَّبَّابَةِ وَالْوُسْطَى</span>” <span style="color: #ff0000;">صحيح البخاري كتاب الأدب ، بَاب فَضْلِ مَنْ يَعُولُ يَتِيمًا</span></div>
+<div><p>&nbsp;عَنْ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ”
+<span style="color: #008000;"> وَكَافِلُ الْيَتِيمِ فِي الْجَنَّةِ هَكَذَا وَقَالَ بِإِصْبَعَيْهِ السَّبَّابَةِ وَالْوُسْطَى</span>” 
+<span style="color: #ff0000;">صحيح البخاري كتاب الأدب ، بَاب فَضْلِ مَنْ يَعُولُ يَتِيمًا</span></p>
+</div>
 </li>
 <li style="text-align: justify;">
-<div>قال ابن بطال رحمه الله : ( حق على من سمع هذا الحديث أن يعمل به ، ليكون رفيق النبي صلى الله عليه وسلم في الجنة) نقله ابن حجر في فتح الباري 10/430</div>
+<div><p>
+قال ابن بطال رحمه الله : ( حق على من سمع هذا الحديث أن يعمل به ، ليكون رفيق النبي صلى الله عليه وسلم في الجنة) نقله ابن حجر في فتح الباري 
+10/430
+</p>
+</div>
 </li>
 </ul>
     </div></div></div>
@@ -36,7 +44,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12  col-sm-12 col-xs-12 text-center">
-                <div class="text-center newThemeHeaderIn " style="margin-bottom: 15px;"> اكفل يتيم</div>
+                <div class="text-center newThemeHeaderIn " style="margin-bottom: 15px;">{{ cppt}} أيتام في انتظار الكفالة </div>
             </div>
             <div class="container">
             <div class="col-md-12 col-sm-12 col-xs-12 text-center front_3_1 front_3_1_0 mt-2">
@@ -44,7 +52,7 @@
                 {% for orphelin in orphelins %}
                     <div class="list_theme_19">
                         <div class="thumbnail block_1"> 
-                            <img style="border-radius: 50%;max-height: 160px;" src="{{ orphelin.image }}"  class="team-img">
+                            <img style="border-radius: 50%;max-height: 160px;" src="{{ asset('/admin/upload/orphelin/'~ orphelin.image) }}" class="team-img">
                             <div class="caption">
                                 <h3 class="list_theme_19_title"><a href="projects/21.html"> {{ orphelin.getFullName }}</a></h3>
                                 <div class="clear"></div>
@@ -57,7 +65,7 @@
                          
 
                                 تاريخ الازدياد :    {{ orphelin.setAt|date('Y-m-d') }}  </div>
-                            <a class="list_theme_19_more" href="projects/21.html">أكفله الأن </a>
+                            <a class="list_theme_19_more" href="{{ path('damandePage',{'id' : orphelin.id }) }}">أكفله الأن </a>
                         </div>
                     </div>
                 {% endfor %}
@@ -65,7 +73,9 @@
             </div>
             </div>
             <div class="col-md-12  col-sm-12 col-xs-12 text-center">
-              frefef
+              <p>{فِي الدُّنْيَا وَالآخِرَةِ وَيَسْأَلُونَكَ عَنِ الْيَتَامَى قُلْ إِصْلاَحٌ لَّهُمْ خَيْرٌ وَإِنْ تُخَالِطُوهُمْ 
+              فَإِخْوَانُكُمْ وَاللّهُ يَعْلَمُ الْمُفْسِدَ مِنَ الْمُصْلِحِ وَلَوْ شَاء اللّهُ لأعْنَتَكُمْ إِنَّ اللّهَ عَزِيزٌ حَكِيمٌ}.. [البقرة : 220
+              </p>
             </div>
         </div>
     </div>

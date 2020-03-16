@@ -22,19 +22,19 @@ class KafalaRepository extends ServiceEntityRepository
     // /**
     //  * @return Kafala[] Returns an array of Kafala objects
     //  */
-    /*
+    
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('k')
-            ->andWhere('k.exampleField = :val')
+            ->join("k.Orphelin", "c")
+            ->andWhere('c.id = :val')
             ->setParameter('val', $value)
-            ->orderBy('k.id', 'ASC')
-            ->setMaxResults(10)
+            ->setMaxResults(100)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Kafala

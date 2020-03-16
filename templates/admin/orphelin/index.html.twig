@@ -1,6 +1,6 @@
 {% extends 'admin/base.html.twig' %}
 
-{% block title %}Orphelins{% endblock %}
+{% block title %}الأيتام{% endblock %}
 
 {% block body %}
  
@@ -8,46 +8,51 @@
     <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Gestion des Orphelins</h1>
+            <h1 class="m-0 text-dark">إدارة الأيتام</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item "><a href="{{ path('admin_dashboard') }}">Table de bord</a></li>
-              <li class="breadcrumb-item active">Orphelins</li>
+              <li class="breadcrumb-item "><a href="{{ path('admin_dashboard') }}">لوحة القيادة</a></li>
+              <li class="breadcrumb-item active">الأيتام</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
-    <h1 class="text-center mt-3 mb-2">Liste des Orphelins</h1>
-    <a class="float-right btn btn-success mb-2" href="{{ path('orphelin_new') }}"><i class="fas fa-plus"></i> Ajouter une Famille</a>
-    <table class="table table-hover">
+    <h1 class="text-center mt-3 mb-2">قائمة الأيتام</h1>
+    <a dir="rtl" class="float-right btn btn-success mb-2" href="{{ path('orphelin_new') }}"><i class="fas fa-plus"></i> اضافة يتيم</a>
+    <table class="table table-hover" dir="rtl">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th class="text-center">Photos</th>
-                <th>Date Création</th>
-                <th>Adresse</th>
-                <th>Genre</th>
-                <th class="text-center">Actions</th>
+                <th class="text-center">الرقم</th>
+                <th class="text-center">الاسم الأول</th>
+                <th class="text-center">الاسم الأخير</th>
+                <th class="text-center">صورة</th>
+                <th>تاريخ التسجيل</th>
+                <th class="text-center">العنوان</th>
+                <th>الجنس</th>
+                <th class="text-center">الحالة</th>
+                <th class="text-center">الإجراءات</th>
             </tr>
         </thead>
         <tbody>
         {% for orphelin in orphelins %}
             <tr>
-                <td>{{ orphelin.id }}</td>
-                <td>{{ orphelin.firstName }}</td>
-                <td>{{ orphelin.lastName }}</td>
+                <td class="text-center">{{ orphelin.id }}</td>
+                <td class="text-center">{{ orphelin.firstName }}</td>
+                <td class="text-center">{{ orphelin.lastName }}</td>
                 <td class="text-center">
                   <img style="max-height: 50px;border-radius: 50%;" src=" {{ asset('/admin/upload/orphelin/' ~  orphelin.image) }}" /></td>
                 <td>{{ orphelin.setAt ? orphelin.setAt|date('d-m-Y') : '' }}</td>
-                <td>{{ orphelin.adresse|slice(0,50) }}</td>
-                <td>{{ orphelin.genre }}</td>
-                <td>
-                    <a class="text-primary btn" href="{{ path('orphelin_show', {'id': orphelin.id}) }}"><i class="fas fa-eye"></i></a>
-                    <a class="text-success btn"  href="{{ path('orphelin_edit', {'id': orphelin.id}) }}"><i class="fas fa-edit"></i></a>
+                <td class="text-center">{{ orphelin.adresse|slice(0,50) }}</td>
+                <td>{% if orphelin.genre == "male" %} ذكر {% else %}  انثى {% endif %}</td>
+                 <td class="text-center">{% if orphelin.status == 0 %}<span class="text-danger">في انتظار الكفالة</span> {% else %}<span class="text-success"> مكفل  </span> {% endif %}</td>
+                <td class="text-center">
+                  <div class="btn-group btn-group-sm">
+                    <a class=" btn btn-info" href="{{ path('orphelin_show', {'id': orphelin.id}) }}"><i class="fas fa-eye"></i></a>
+                    <a class=" btn btn-success"  href="{{ path('orphelin_edit', {'id': orphelin.id}) }}"><i class="fas fa-edit"></i></a>
+                  </div>
                 </td>
+               
             </tr>
         {% else %}
             <tr>

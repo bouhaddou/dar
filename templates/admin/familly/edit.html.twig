@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/base.html.twig' %}
 
 {% block title %}Edit Familly{% endblock %}
 
@@ -19,7 +19,7 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     <div class="container">
-    <h1>Modification des Information</h1>
+    <h1 class="text-center mt-3 mb-2">Modification des Information</h1>
 
     {{ include('admin/familly/_form.html.twig', {'button_label': 'Update'}) }}
 

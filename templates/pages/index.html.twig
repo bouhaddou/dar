@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}hello!{% endblock %}
+{% block title %}للجمعية دار الكرم لرعاية الأيتام {% endblock %}
 
 {% block body %}
     {% include "partials/slider.html.twig" %}
@@ -12,11 +12,11 @@
                     {% for post in posts %}
                         <div class="col-md-12 col-sm-12 col-xs-12 text-right bootstrap_noPadding">
                             <div class=" col-md-4 hidden-sm hidden-xs text-right imgNews thumbnail bootstrap_noPadding">
-                                <img  src="{{ asset('/admin/upload/post/'~ post.image) }}"  class="team-img team-imgF">
+                                <img  src="{{ asset('/admin/upload/post/'~ post.image) }}"  class="team-img ">
                             </div>  
                             <div class="col-md-8 col-sm-12 col-xs-12 text-right ">
                                 <div class="hidden-lg hidden-md col-sm-12 col-xs-12 text-right imgNews thumbnail bootstrap_noPadding">
-                                    <img src="sites/default/files/styles/front_news/public/cover/WhatsApp%20Image%202020-02-29%20at%2012.48.20%20AM%20(4)f243.jpg?itok=L68c3Tsh"  class="team-img ">
+                                    <img   src="{{ asset('/admin/upload/post/'~ post.image) }}"  class="team-img ">
                                 </div>
                                 <a class="newsTitle" href="{{ path('newsDetailsPage',{'id' : post.id }) }}">{{ post.titre }}</a>
                                 <div class="newsTeaser">
@@ -57,9 +57,9 @@
     
                 <div class="col-md-3 col-sm-6 col-xs-12 bootstrap_noPadding text-center ">
                     <div class="front_counters_in">
-                        <div class="front_counters_1 front_counters_1_c4">457</div>
+                        <div class="front_counters_1 front_counters_1_c4">{{ stats.orphelinfalse}}</div>
                     </div>
-                    <div class="front_counters_in2">المستفيدون من عام 1424 هـ</div>
+                    <div class="front_counters_in2">المستفيدون</div>
                 </div>
                 
                 <div class="col-md-3 col-sm-6 col-xs-12 bootstrap_noPadding text-center ">
@@ -95,13 +95,13 @@
                 <div class="list_news  col-md-4 col-sm-6 col-xs-12">
                     <div class="list_theme_1">
                         <div class="thumbnail block_1"> 
-                            <img src="{{ projet.image }}" class="team-img">       
+                            <img src="{{ asset('/admin/upload/projet/'~ projet.image) }}"  class="team-img">       
                              <div class="caption">
                             <h3 class="list_theme_1_title">
                                 <a href="news/1729.html"> {{ projet.titre }}</a>
                             </h3>
                             <div class="list_theme_1_body">{{ projet.description|slice(0,250)|raw }}</div>
-                                <a class="list_theme_1_more" href="news/1729.html">المزيد</a>
+                                <a class="list_theme_1_more" href="{{ path('projetpage') }}">المزيد</a>
                             </div>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12  col-sm-12 col-xs-12 text-center">
-                <div class="text-center newThemeHeaderIn " style="margin-bottom: 15px;"> اكفل يتيم</div>
+                <div class="text-center newThemeHeaderIn " style="margin-bottom: 15px;"> أيتام في انتظار الكفالة</div>
             </div>
             <div class="container">
             <div class="col-md-12 col-sm-12 col-xs-12 text-center front_3_1 front_3_1_0 mt-2">
@@ -124,20 +124,16 @@
                 {% for orphelin in orphelins %}
                     <div class="list_theme_19">
                         <div class="thumbnail block_1"> 
-                            <img style="border-radius: 50%;max-height: 160px;" src="{{ orphelin.image }}"  class="team-img">
+                            <img style="border-radius: 50%;max-height: 160px;" src="{{ asset('/admin/upload/orphelin/'~ orphelin.image) }}"  class="team-img">
                             <div class="caption">
-                                <h3 class="list_theme_19_title"><a href="projects/21.html"> {{ orphelin.getFullName }}</a></h3>
+                                <h3 class="list_theme_19_title"><a href="{{ path('damandePage',{'id': orphelin.id }) }}"> {{ orphelin.getFullName }}</a></h3>
                                 <div class="clear"></div>
                             </div>
                             <div class="list_theme_19_title">
-                         
-
                                 العمر :    {{ orphelin.getAge }}  </div>
                                 <div class="list_theme_19_title">
-                         
-
-                                تاريخ الازدياد :    {{ orphelin.setAt|date('Y-m-d') }}  </div>
-                            <a class="list_theme_19_more" href="projects/21.html">أكفله الأن </a>
+                                تاريخ الازدياد :    {{ orphelin.setAt|date('d-m-Y') }}  </div>
+                            <a class="list_theme_19_more" href="{{ path('damandePage',{'id': orphelin.id }) }}">أكفله الأن </a>
                         </div>
                     </div>
                 {% endfor %}
@@ -145,7 +141,7 @@
             </div>
             </div>
             <div class="col-md-12  col-sm-12 col-xs-12 text-center">
-              frefef
+            <h1><a href="{{ path('kafilPage') }}">أيتام في انتظار الكفالة</a></h1>
             </div>
         </div>
     </div>

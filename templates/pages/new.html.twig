@@ -1,15 +1,18 @@
 {% extends "base.html.twig" %}
 {% block body %}
     <!-- psection des news -->
+    <br><br>
     <div class="newThemeHeader">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center newThemeHeaderIn">
-                    news 
+                    اخبار    
+ 
                 </div>
             </div>
         </div>
     </div>
+    <br>
 <div class="container marketing">
     <section class="content ">
         <div class="contentView clearfix pure-form">
@@ -18,11 +21,11 @@
                 <div class="list_news  col-md-4 col-sm-6 col-xs-12">
                     <div class="list_theme_1">
                         <div class="thumbnail block_1"> 
-                            <img src="{{ asset('admin/upload/post/'~ post.image) }}" class="team-img">        
+                            <img style="max-height: 190px; min-height: 190px;" src="{{ asset('admin/upload/post/'~ post.image) }}" class="team-img">        
                             <div class="caption">
                             <h3 class="list_theme_1_title"><a href="">{{ post.titre }}</a></h3>
                             <div class="list_theme_1_body"> 
-                             {{ post.description|slice(0,200)|raw }}
+                             {{ post.description|slice(0,60)|raw }}
                             </div>
                                 <a class="list_theme_1_more" href="">المزيد</a>
                             </div>

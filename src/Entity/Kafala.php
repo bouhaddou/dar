@@ -48,17 +48,29 @@ class Kafala
      */
     private $periode;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $observation;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $pour;
+
+
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getSetAtdebut(): ?\DateTimeInterface
+    public function getSetAtdebut()
     {
         return $this->setAtdebut;
     }
 
-    public function setSetAtdebut(\DateTimeInterface $setAtdebut): self
+    public function setSetAtdebut(\DateTime $setAtdebut): self
     {
         $this->setAtdebut = $setAtdebut;
 
@@ -121,6 +133,30 @@ class Kafala
     public function setPeriode(string $periode): self
     {
         $this->periode = $periode;
+
+        return $this;
+    }
+
+    public function getObservation(): ?string
+    {
+        return $this->observation;
+    }
+
+    public function setObservation(?string $observation): self
+    {
+        $this->observation = $observation;
+
+        return $this;
+    }
+
+    public function getPour(): ?string
+    {
+        return $this->pour;
+    }
+
+    public function setPour(string $pour): self
+    {
+        $this->pour = $pour;
 
         return $this;
     }

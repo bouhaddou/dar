@@ -3,6 +3,8 @@
 {% block title %} Annonces{% endblock %}
 
 {% block body %}
+
+{%  form_theme  form  _self %}
 <div class="content-header">
 <div class="container-fluid">
         <div class="row mb-2">
@@ -20,8 +22,65 @@
       </div><!-- /.container-fluid -->
     <div class="container">
     <h1 class="text-center mt-3 mb-3">Ajouter une Annonce</h1>
-    {{ include('admin/post/_form.html.twig') }}
+      {{ form_start(form) }}
+      {{ form_widget(form) }}
+      <button type="button" id="add_image" class="btn btn-info"><i class="fas fa-plus"></i> Ajouter image</button>
+		<br><br>
+          <button class="btn btn-success mt-3 mb-3"><i class="fas fa-plus"></i>{{ button_label|default('Sauvgarder') }}</button>
+      {{ form_end(form) }}
     <a class="btn btn-primary" href="{{ path('post_index') }}"><i class="fas fa-undo"></i> Retour</a>
     </div>
     </div>
+{% endblock %}
+
+{%  block _post_images_widget %}
+	<p class="">
+		vous pouvez ajouter vos images ici !</p>
+
+	{{ form_widget(form) }}
+
+
+{% endblock  %}
+
+{%  block _post_images_entry_row %}
+<div class="row" id="block_{{id}}">
+	<div class="col-md-5 mt-2">
+		{{ form_widget(form.lien) }}
+	</div>
+	<div class="col-md-5 mt-2">
+    <div class="row">
+      <div class="col-md-8 mb-2">
+      	  {{ form_widget(form.caption) }}
+      </div>
+      <div class="col-md-4">
+	    	<button type="button" data-action="delete" data-target="#block_{{id}}" class="btn btn-danger mb-2">X</button>
+      </div>
+    </div>
+	</div>
+</div>
+{% endblock  %}
+
+{% block javascripts %}
+<script>
+	$('#add_image').click(function(){
+	         const index = +$('#compteur').val();
+	         const tmp = $('#post_images').data('prototype').replace(/__name__/g,index);
+	         $('#compteur').val(index + 1);
+	         $('#post_images').append(tmp);
+	         handlendelete();
+	     });
+	    function handlendelete(){
+	        $('button[data-action="delete"]').click(function(){
+	            const target= this.dataset.target;
+	            $(target).remove();
+	        });
+	    }
+	    function updateCompteur()
+	    {
+	        const count=+$('#post_images div.form-group').length;
+	        $('#compteur').val(count);
+	    }
+	   updateCompteur();
+	    handlendelete();
+</script>
 {% endblock %}

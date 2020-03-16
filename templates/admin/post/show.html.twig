@@ -36,12 +36,25 @@
             </tr>
             <tr>
                 <th>Photo</th>
-                <td class="text-center"><img style="max-height: 50px;border-radius: 50%;" src="{{ asset('/admin/upload/post/'~ post.image) }}" ></td>
+                <td class="text-center"><img style="max-height: 230px;border-radius: 10%;" src="{{ asset('/admin/upload/post/'~ post.image) }}" ></td>
             </tr>
+         
+          
+                
+                    {% for image in  post.images %}  
+                    <tr>
+                    <th class="text-center"> Autre Images : {{ image.caption }}</th>
+                    <td class="text-center">  
+                            <a class="lightbox  thumbnail " href="{{ asset('/admin/upload/post/'~ image.lien) }}"  class="team-img" title="مبادرة لغة اليتيم الأول">
+                            <img style="max-height: 200px;" src="{{ asset('/admin/upload/post/'~ image.lien) }}" class="team-img"></a>
+                      </td> 
+                      </tr>
+                    {% endfor %}
             <tr>
                 <th>Date </th>
                 <td>{{ post.setAt ? post.setAt|date('d-m-Y') : '' }}</td>
             </tr>
+           
         </tbody>
     </table>
     <a class="btn btn-success" href="{{ path('post_edit', {'id': post.id}) }}"><i class="fas fa-edit "></i> Modifier</a><br>

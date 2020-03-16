@@ -1,25 +1,25 @@
 {% extends 'admin/base.html.twig' %}
 
-{% block title %} Orphelins{% endblock %}
+{% block title %}الأيتام{% endblock %}
 
 {% block body %}
-<div class="content-header">
-<div class="container-fluid">
+ 
+   <div class="content-header">
+    <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Gestion Orphelin</h1>
+            <h1 class="m-0 text-dark">إدارة الأيتام</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item "><a href="{{ path('admin_dashboard') }}">Table de bord</a></li>
-              <li class="breadcrumb-item " ><a href="{{ path('orphelin_index') }}">Orphelins</a></li>
-              <li class="breadcrumb-item active">Ajouter une Orphelin</li>
+              <li class="breadcrumb-item "><a href="{{ path('admin_dashboard') }}">لوحة القيادة</a></li>
+              <li class="breadcrumb-item active">الأيتام</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
-    <div class="container">
-    <h1 class="text-center mt-3 mb-3">Ajouter un Orphelin</h1>
+      <div class="container">
+    <h1 class="text-center mt-3 mb-2">   إضافة يتيم جديد</h1>
 
     {{ include('admin/orphelin/_form.html.twig') }}
     <a class="btn btn-primary" href="{{ path('orphelin_index') }}"><i class="fas fa-undo"></i> Retour</a>

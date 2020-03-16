@@ -49,12 +49,12 @@ class Images
         return $this;
     }
 
-    public function getLien(): ?string
+    public function getLien()
     {
         return $this->lien;
     }
 
-    public function setLien(string $lien): self
+    public function setLien( $lien): self
     {
         $this->lien = $lien;
 
