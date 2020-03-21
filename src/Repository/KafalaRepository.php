@@ -4,8 +4,11 @@ namespace App\Repository;
 
 use App\Entity\Kafala;
 use App\Entity\Orphelin;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+
+
+
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Kafala|null find($id, $lockMode = null, $lockVersion = null)
@@ -24,6 +27,7 @@ class KafalaRepository extends ServiceEntityRepository
     //  * @return Kafala[] Returns an array of Kafala objects
     //  */
     
+
     public function findKafalabyOrphelin(Orphelin $orphelin)
     {
         return $this->createQueryBuilder('k')

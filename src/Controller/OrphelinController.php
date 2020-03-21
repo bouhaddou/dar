@@ -59,13 +59,14 @@ class OrphelinController extends AbstractController
     /**
      * @Route("/{id}/show", name="orphelin_show", methods={"GET"})
      */
+
     public function show(Orphelin $orphelin,KafalaRepository $repokafala,GarantRepository $Repogarant): Response
     {
        
         return $this->render('admin/orphelin/show.html.twig', [
             'orphelin' => $orphelin,
-            'kafala' => $repokafala->findKafalabyOrphelin($orphelin),
             'garants' => $Repogarant->findGaranybyOrpelin($orphelin)
+
         ]);
     }
 

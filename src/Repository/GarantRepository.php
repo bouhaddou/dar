@@ -4,8 +4,10 @@ namespace App\Repository;
 
 use App\Entity\Garant;
 use App\Entity\Orphelin;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+
+
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Garant|null find($id, $lockMode = null, $lockVersion = null)
