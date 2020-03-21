@@ -47,6 +47,11 @@ class Garant
      */
     private $kafalas;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $setAt;
+
     public function __construct()
     {
         $this->kafalas = new ArrayCollection();
@@ -137,6 +142,18 @@ class Garant
                 $kafala->setGarant(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSetAt(): ?\DateTimeInterface
+    {
+        return $this->setAt;
+    }
+
+    public function setSetAt(\DateTimeInterface $setAt): self
+    {
+        $this->setAt = $setAt;
 
         return $this;
     }

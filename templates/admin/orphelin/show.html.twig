@@ -3,8 +3,10 @@
 {% block title %}الأيتام{% endblock %}
 
 {% block body %}
- 
-   <div class="content-header">
+
+
+
+<div class="content-header" >
     <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -20,119 +22,141 @@
       </div><!-- /.container-fluid -->
     <h1 class="text-center mt-3 mb-3"> معلومات اليتيم </h1>
     <hr>
-    <div class="container">
+
+    <!-- Main content -->
+    <section class="content" dir="rtl">
+      <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6 border">
-                <div class="row">
-                    <div class="col-md-12">
-                        <table class="table table-bordred" dir="rtl">
-                        <h4 class="text-center"> معلومات الكافل</h4>
+          <div class="col-md-3">
+
+            <!-- Profile Image -->
+            <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle" src="{{ asset('/admin/upload/orphelin/'~ orphelin.image) }}" alt="User profile picture">
+                </div>
+
+                <h3 class="profile-username text-center">{{ orphelin.getFullName }}</h3>
+
+                <p class="text-muted text-center">يتيم(ة) رقم  : {{ orphelin.id }}</p>
+
+                <ul class="list-group list-group-unbordered mb-3">
+                  <li class="list-group-item" dir="rtl">
+                     <a class="float-right">العمر : </a> <b>   {{ orphelin.getAge }} سنوات  </b>
+                  </li>
+                  <li class="list-group-item">
+                     <a class="float-right">تاريخ التسجيل :</a><b>{{ orphelin.familly.setAt|date('d-m-Y') }}</b>
+                  </li>
+                  <li class="list-group-item">
+                     <a class="float-right">الحالة :</a><b>{% if orphelin.status == 0 %}<span class="text-danger">في انتظار الكفالة</span> {% else %}<span class="text-success"> مكفل  </span> {% endif %}</b>
+                  </li>
+                </ul>
+
+                <a href="#" class="btn btn-primary btn-block"><b>العودة</b></a>
+              </div>
+              <!-- /.card-body -->
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-md-9">
+            <div class="card">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">معلومات الكفلاء</a></li>
+                </ul>
+              </div><!-- /.card-header -->
+
+              {% for garant in garants %}
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane active" id="activity">
+                    <!-- Post -->
+                    <div class="post">
+                      <div class="user-block mb-0" >
+                        <img class="img-circle img-bordered-sm float-right" src="../../dist/img/user1-128x128.jpg" alt="user image">
+                        <span class="username float-right">
+                          <a class="pr-2" href="#">{{ garant.Name  }} </a>
+                        </span>
+                        <span class="description">تاريخ التكفيل  : {{ garant.setAt|date('d-m-Y')}}</span>
+                      </div>
+
+                      <!-- /.user-block -->
+                      <div class="row mt-2">
+                            <div class="col-md-4 border ">
+                                <strong class="float-right "><i class="fas fa-book mr-1"></i> الهاتف </strong>
+                                <br>
+                                <p class="text-muted text-center">
+                                {{ garant.phone }}
+                                </p>
+                            </div>
+                            <div class="col-md-4 border"> 
+                                <strong class="float-right "><i class="fas fa-book mr-1"></i> الجنسية </strong>
+                                <br><p class="text-muted text-center">
+                                {{ garant.paye }}
+                                </p>
+                            </div>
+                            <div class="col-md-4 border"> 
+                                <strong class="float-right "><i class="fas fa-book mr-1"></i> البريد الإلكتروني </strong>
+                                <br><p class="text-muted text-center">
+                                {{ garant.email }}
+                                </p>
+                            </div>
+                          </div>
+                      <div class="card">
+                        <div class="card-header ">
+                          <h5 class="text-center ">معلومات الكفالة</h5>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                          <table class="table table-bordered">
+                            <thead>                  
+                              <tr>
+                                <th style="width: 10px">الرقم</th>
+                                <th class="text-center">تاريخ الكفالة</th>
+                                <th class="text-center">الفترة</th>
+                                <th class="text-center">الحالة</th>
+                                <th class="text-center">المبلغ</th>
+                              </tr>
+                            </thead>
                             <tbody>
-                            {% for kafal in kafala %}
-                            {% for gard in kafal.garant %}
-                                <tr>
-                                    <th class="text-center">الرقم</th>
-                                    <td class="text-center">{{ gard.id }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="text-center">الاسم الأول</th>
-                                    <td class="text-center">{{ gard.name }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="text-center">الاسم الأخير</th>
-                                    <td class="text-center">{{ gard.paye }}</td>
-                                </tr>
-                                
-                                <tr>
-                                    <th class="text-center">الحالة</th>
-                                    <td class="text-center">{{ gard.email }}</td>
-                                </tr>
-                                {% endfor %}
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-md-12">
-                        <table class="table table-bordred" dir="rtl">
-                        <h4 class="text-center"> معلومات الكفالة</h4>
-                            <tbody>
-                            {% for kafal in kafala %}
-                                <tr>
-                                    <th class="text-center">الرقم</th>
-                                    <td class="text-center">{{ kafal.id }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="text-center">الاسم الأول</th>
-                                    <td class="text-center">{{ kafal.setAtdebut|date('Y-m-d') }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="text-center">الاسم الأخير</th>
-                                    <td class="text-center">{{ kafal.type }}</td>
-                                </tr>
-                                
-                                <tr>
-                                    <th class="text-center">الحالة</th>
-                                    <td class="text-center">{{ kafal.periode }}</td>
-                                </tr>
+                            {% for kafala in garant.kafalas %}
+                              <tr>
+                                <td>{{ kafala.id }}</td>
+                                <td class="text-center">{{ kafala.setAtdebut|date('d-m-Y') }}</td>
+                                <td class="text-center">
+                                  {{  kafala.periode }}
+                                </td>
+                                <td class="text-center">
+                                    {{  kafala.type }}
+                                </td>
+                                <td class="text-center">
+                                    {{  kafala.prix }}
+                                </td>
+                              </tr>
                             {% endfor %}
                             </tbody>
-                        </table>
+                          </table>
+                        </div>
+                        <!-- /.card-body -->
+                      </div>
                     </div>
+                {% endfor %}
+                    </div>
+                    <!-- /.post -->
+                  </div>
                 </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
             </div>
-            <div class="col-md-6 border">
-                <table class="table table-bordred" dir="rtl">
-                    <h4 class="text-center"> معلومات اليتيم   </h4>
-                    <tbody>
-                        <tr>
-                            <th class="text-center">الرقم</th>
-                            <td class="text-center">{{ orphelin.id }}</td>
-                        </tr>
-                        <tr>
-                            <th class="text-center">الاسم الأول</th>
-                            <td class="text-center">{{ orphelin.firstName }}</td>
-                        </tr>
-                        <tr>
-                            <th class="text-center">الاسم الأخير</th>
-                            <td class="text-center">{{ orphelin.lastName }}</td>
-                        </tr>
-                        <tr>
-                            <th class="text-center">صورة</th>
-                            <td class="text-center"><img style="max-height: 130px;min-height: 130px;" src="{{ asset('/admin/upload/orphelin/'~ orphelin.image) }}"></td>
-                        </tr>
-                        <tr>
-                            <th class="text-center">تاريخ التسجيل</th>
-                            <td class="text-center">{{ orphelin.setAt ? orphelin.setAt|date('Y-m-d') : '' }}</td>
-                        </tr>
-                        <tr>
-                            <th class="text-center">العنوان</th>
-                            <td class="text-center">{{ orphelin.adresse }}</td>
-                        </tr>
-                        <tr>
-                            <th class="text-center">الجنس</th>
-                            <td class="text-center">{{ orphelin.genre }}</td>
-                        </tr>
-                        <tr>
-                            <th class="text-center">الحالة</th>
-                            <td class="text-center">{{ orphelin.status }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md-12 mt-2 text-center">
-                <div class="row" dir="rtl">
-                    <div class="col">
-                        <a class="btn btn-success" href="{{ path('orphelin_edit', {'id': orphelin.id}) }}"><i class="fas fa-edit "></i> تعديل</a><br>
-                    </div>
-                    <div class="col">
-                        <a class="btn btn-primary " href="{{ path('orphelin_index') }}"><i class="fas fa-undo"></i> رجوع </a>
-                    </div>
-                    <div class="col">
-                    {{ include('admin/orphelin/_delete_form.html.twig') }}
-                    </div>
-                </div>
-            </div>
-    </div>
- </div>
-</div></div>
+            <!-- /.nav-tabs-custom -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+</div>
+
 {% endblock %}

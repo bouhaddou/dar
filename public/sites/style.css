@@ -133,3 +133,11 @@ a {
     background-color: #5f9ea0;
     margin: 0;
 }
+.post {
+    border-bottom: none;
+    color: #666;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+
+
